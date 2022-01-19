@@ -13,9 +13,6 @@ $service = new Shortener();
 // api variable to get HTTP method dynamically
 $api = $_SERVER['REQUEST_METHOD'];
 
-if ($api == 'GET') {
-    echo  $service->message("Method not allowed", true);
-}
 
 if ($api == 'POST') {
     $url = $service->test_input($_POST['url']);
@@ -28,4 +25,8 @@ if ($api == 'POST') {
     } catch (Exception $exception) {
         echo $service->message($exception->getMessage(), true);
     }
+}else{
+
+    echo  $service->message("Method not allowed", true);
+
 }
